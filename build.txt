@@ -1,3 +1,3 @@
-displayName = Wisterraria
-author = CanadianMRE, NuovaPrime
-version = 0.1
+displayName = Wisteria
+author = NuovaPrime, CanadianMRE
+version = 1.0.0.0

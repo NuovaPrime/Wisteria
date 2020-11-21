@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jaymen\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisterraria\\Wisterraria.csproj": {}
+    "C:\\Users\\Logan\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisteria\\Wisterraria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jaymen\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisterraria\\Wisterraria.csproj": {
+    "C:\\Users\\Logan\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisteria\\Wisterraria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaymen\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisterraria\\Wisterraria.csproj",
+        "projectUniqueName": "C:\\Users\\Logan\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisteria\\Wisterraria.csproj",
         "projectName": "Wisterraria",
-        "projectPath": "C:\\Users\\Jaymen\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisterraria\\Wisterraria.csproj",
-        "packagesPath": "C:\\Users\\Jaymen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jaymen\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisterraria\\obj\\",
+        "projectPath": "C:\\Users\\Logan\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisteria\\Wisterraria.csproj",
+        "packagesPath": "C:\\Users\\Logan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Logan\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisteria\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jaymen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Logan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +26,6 @@
         },
         "frameworks": {
           "net45": {
-            "targetAlias": "net45",
             "projectReferences": {}
           }
         },
@@ -38,14 +37,13 @@
       },
       "frameworks": {
         "net45": {
-          "targetAlias": "net45",
           "dependencies": {
             "tModLoader.CodeAssist": {
               "target": "Package",
               "version": "[0.1.*, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
