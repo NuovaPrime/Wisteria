@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ssFtsf2/LRvq3zVCGIVnj9Lw0IRGd8PVnPAl/Eqa8z8KnbKOOcfFpteMFZlUy793u1EugaW2dnZeZHzlGcA24A==",
+  "dgSpecHash": "O76oEE/GmW0apCrAAKT/6Z7wLjwU8d7WTbs9O61oKyQUoFfyqI7T2JVQiYxT7kO0oIX41maRF6YH4uvmNmff4w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Logan\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisteria\\Wisteria.csproj",
+  "projectFilePath": "C:\\Users\\Jaymen\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\Wisteria\\Wisteria.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Logan\\.nuget\\packages\\tmodloader.codeassist\\0.1.1\\tmodloader.codeassist.0.1.1.nupkg.sha512"
+    "C:\\Users\\Jaymen\\.nuget\\packages\\tmodloader.codeassist\\0.1.1\\tmodloader.codeassist.0.1.1.nupkg.sha512"
   ],
   "logs": []
 }
