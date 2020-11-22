@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameInput;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Wisteria.UI;
 
@@ -15,85 +11,78 @@ namespace Wisteria.Players
 {
     public partial class WisteriaPlayer : ModPlayer
     {
-        int breathSoundTimer = 0;
-        SoundEffectInstance breathingSound = null;
+        public SoundEffectInstance breathingSound = null;
+        public bool isBreathing;
+        public float breathingSpeed, breathingDecaySpeed, breathingMastery, breath, breathCD, maxBreath;
+        public int breathSoundTimer, decayTime = 0;
+        public Enum BreathingStyle;
+
         public void PreUpdateBreathing()
         {
-            if (Breath > MaxBreath)
-                Breath = MaxBreath;
-            if (Breath < 0)
-                Breath = 0;
-            IsBreathing = false;
+            if (breath > maxBreath)
+                breath = maxBreath;
 
-            if (Breath > 0)
-                BreathUI.visible = true;
+            if (breath < 0)
+                breath = 0;
+
+            isBreathing = false;
+
+            if (breath > 0)
+                BreathUI.Visible = true;
             else
-                BreathUI.visible = false;
+                BreathUI.Visible = false;
         }
-        int decayTime = 0;
+
         public void PostUpdateBreathing()
         {
-            if (Breath > 0 && !IsBreathing)
+            if (breath > 0 && !isBreathing)
             {
                 breathSoundTimer = 0;
-                decayTime++;
-                if (decayTime > 30)
+
+                if (++decayTime > 30)
                 {
                     decayTime = 0;
-                    IsBreathing = false;
+                    isBreathing = false;
                 }
             }
-            if (Breath > 0 && !IsBreathing)
-            {
-                Breath -= BreathingDecaySpeed;
-            }
-            if (IsBreathing == true)
-            {
-                breathSoundTimer++;
-                if (breathSoundTimer == 1)
-                {
-                    breathingSound = Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/BreathIn"));
 
-                }
+            if (breath > 0 && !isBreathing)
+                breath -= breathingDecaySpeed;
+
+            if (isBreathing == true)
+            {
+                if (++breathSoundTimer == 1)
+                    breathingSound = Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/BreathIn"));
+
                 if (breathSoundTimer >= 84)
                     breathSoundTimer = 0;
             }
-            if (!IsBreathing && breathingSound != null)
-            {
+
+            if (!isBreathing && breathingSound != null)
                 breathingSound.Stop();
-            }
-            Main.NewText("Breath is: " + Breath);
+
+            Main.NewText("Breath is: " + breath);
         }
-        
+
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Wisteria.Instance.breathKey.Current && BreathCD <= 0)
+            if (Wisteria.Instance.breathKey.Current && breathCD <= 0)
             {
-                IsBreathing = true;
-                Breath += BreathingSpeed;
+                isBreathing = true;
+                breath += breathingSpeed;
                 player.velocity *= 0.95f;
 
                 for (int i = 0; i < 4; i++)
-                {      
+                {
                     Vector2 mouthPos = Main.LocalPlayer.Center + new Vector2(player.direction == 1 ? 10 : -10, -5);
                     Vector2 velocity = Vector2.UnitX.RotatedByRandom(MathHelper.ToRadians(30f)) * 3f * player.direction;
                     mouthPos += velocity * 5f;
                     velocity *= -1;
-                    Dust dust = Dust.NewDustPerfect(mouthPos, 263, velocity, 0, new Color(255, 255, 255), 1.5f);
+                    Dust dust = Dust.NewDustPerfect(mouthPos, DustID.PortalBolt, velocity, 0, new Color(255, 255, 255), 1.5f);
                     dust.scale *= 0.3f;
                     dust.noGravity = true;
                 }
-                
-
             }
         }
-        public float BreathingSpeed { get; set; }
-        public float BreathingDecaySpeed { get; set; }
-        public float BreathingMastery { get; set; }
-        public Enum BreathingStyle { get; set; }
-        public bool IsBreathing { get; set; }
-        public float Breath { get; set; }
-        public float BreathCD { get; set; }
-        public float MaxBreath { get; set; }
     }
 }

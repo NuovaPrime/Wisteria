@@ -1,35 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace Wisteria.Players
 {
     public partial class WisteriaPlayer : ModPlayer
     {
-        public override void PreUpdate()
-        {
-            PreUpdateBreathing();   
-        }
-        public override void PostUpdate()
-        {
-            PostUpdateBreathing();
-        }
+        public bool playerInitialized;
+
+        public override void PreUpdate() => PreUpdateBreathing();
+
+        public override void PostUpdate() => PostUpdateBreathing();
+
         public override void Initialize()
         {
-            if (!PlayerInitialized)
+            if (!playerInitialized)
             {
-                Breath = 0;
-                MaxBreath = 100;
-                PlayerInitialized = true;
+                breath = 0;
+                maxBreath = 100;
                 BreathingStyle = BreathingStyles.BreathingStyleEnum.None;
-                BreathingMastery = 0;
-                BreathingSpeed = 0.15f;
-                BreathingDecaySpeed = 0.25f;
+                breathingMastery = 0;
+                breathingSpeed = 0.15f;
+                breathingDecaySpeed = 0.25f;
+
+                playerInitialized = true;
             }
         }
-        public bool PlayerInitialized { get; set; }
     }
 }
