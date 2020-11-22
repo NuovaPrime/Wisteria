@@ -4,6 +4,8 @@ using System;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
+
+//using Terraria.Localization;
 using Terraria.ModLoader;
 using Wisteria.UI;
 
@@ -16,6 +18,13 @@ namespace Wisteria.Players
         public float breathingSpeed, breathingDecaySpeed, breathingMastery, breath, breathCD, maxBreath;
         public int breathSoundTimer, decayTime = 0;
         public Enum BreathingStyle;
+
+        public void OnEnterWorldBreathing(Player player)
+        {
+            // TODO: Fix localization
+            if (Wisteria.Instance.breathKey.GetAssignedKeys().Count == 0)
+                Main.NewText(/*Language.GetTextValue("Mods.Wisteria.BreathKeyUnbound")*/ "Your breath key appears to be unbound. Breathing is a core mechanic in Wisteria, so be sure to bind it to a key!");
+        }
 
         public void PreUpdateBreathing()
         {
@@ -61,7 +70,8 @@ namespace Wisteria.Players
             if (!isBreathing && breathingSound != null)
                 breathingSound.Stop();
 
-            Main.NewText("Breath is: " + breath);
+            if (breath > 0)
+                Main.NewText("Breath is: " + breath);
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)

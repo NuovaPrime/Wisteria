@@ -1,4 +1,5 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Wisteria.Players
 {
@@ -24,5 +25,7 @@ namespace Wisteria.Players
                 playerInitialized = true;
             }
         }
+
+        public override void OnEnterWorld(Player player) => OnEnterWorldBreathing(player);
     }
 }
