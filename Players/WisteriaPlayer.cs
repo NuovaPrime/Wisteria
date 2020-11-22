@@ -19,13 +19,16 @@ namespace Wisteria.Players
         }
         public override void Initialize()
         {
-            Breath = 0;
-            MaxBreath = 100;
-            PlayerInitialized = true;
-            BreathingStyle = BreathingStyles.BreathingStyleEnum.None;
-            BreathingMastery = 0;
-            BreathingSpeed = 0.05f;
-            BreathingDecaySpeed = 0.20f;
+            if (!PlayerInitialized)
+            {
+                Breath = 0;
+                MaxBreath = 100;
+                PlayerInitialized = true;
+                BreathingStyle = BreathingStyles.BreathingStyleEnum.None;
+                BreathingMastery = 0;
+                BreathingSpeed = 0.15f;
+                BreathingDecaySpeed = 0.25f;
+            }
         }
         public bool PlayerInitialized { get; set; }
     }

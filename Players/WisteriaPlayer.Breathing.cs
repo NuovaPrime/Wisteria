@@ -9,6 +9,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameInput;
 using Terraria.ModLoader;
+using Wisteria.UI;
 
 namespace Wisteria.Players
 {
@@ -23,7 +24,11 @@ namespace Wisteria.Players
             if (Breath < 0)
                 Breath = 0;
             IsBreathing = false;
-            
+
+            if (Breath > 0)
+                BreathUI.visible = true;
+            else
+                BreathUI.visible = false;
         }
         int decayTime = 0;
         public void PostUpdateBreathing()
@@ -57,6 +62,7 @@ namespace Wisteria.Players
             {
                 breathingSound.Stop();
             }
+            Main.NewText("Breath is: " + Breath);
         }
         
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -65,15 +71,17 @@ namespace Wisteria.Players
             {
                 IsBreathing = true;
                 Breath += BreathingSpeed;
+                player.velocity *= 0.95f;
 
-                for (int i = 0; i < 2; i++)
-                {
-                    Dust dust;
-                    Vector2 position = Main.LocalPlayer.Center;
-                    dust = Dust.NewDustDirect(position + new Vector2(0, -10), 0, -40, 263, 4.236842f, 0f, 0, new Color(255, 255, 255), 1.052632f);
+                for (int i = 0; i < 4; i++)
+                {      
+                    Vector2 mouthPos = Main.LocalPlayer.Center + new Vector2(player.direction == 1 ? 10 : -10, -5);
+                    Vector2 velocity = Vector2.UnitX.RotatedByRandom(MathHelper.ToRadians(30f)) * 3f * player.direction;
+                    mouthPos += velocity * 5f;
+                    velocity *= -1;
+                    Dust dust = Dust.NewDustPerfect(mouthPos, 263, velocity, 0, new Color(255, 255, 255), 1.5f);
+                    dust.scale *= 0.3f;
                     dust.noGravity = true;
-                    dust.noLight = true;
-                    dust.scale *= 0.5f;
                 }
                 
 
