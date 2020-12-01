@@ -1,9 +1,9 @@
 ﻿using Terraria;
-using Wisteria.Players;
+using Wisteria.Common.Players;
 
 namespace Wisteria.Utilities
 {
-    public static class PlayerHelper
+    public static partial class ExtensionMethods
     {
         public static WisteriaPlayer GetWisteriaPlayer(this Player player) => player.GetModPlayer<WisteriaPlayer>();
     }

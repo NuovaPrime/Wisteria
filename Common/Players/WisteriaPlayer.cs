@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace Wisteria.Players
+namespace Wisteria.Common.Players
 {
     public partial class WisteriaPlayer : ModPlayer
     {

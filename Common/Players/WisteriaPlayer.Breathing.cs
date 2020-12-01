@@ -5,18 +5,19 @@ using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
 
-//using Terraria.Localization;
+/*using Terraria.Localization;*/
+
 using Terraria.ModLoader;
 using Wisteria.UI;
 
-namespace Wisteria.Players
+namespace Wisteria.Common.Players
 {
     public partial class WisteriaPlayer : ModPlayer
     {
-        public SoundEffectInstance breathingSound = null;
         public bool isBreathing;
         public float breathingSpeed, breathingDecaySpeed, breathingMastery, breath, breathCD, maxBreath;
         public int breathSoundTimer, decayTime = 0;
+        public SoundEffectInstance breathingSound = null;
         public Enum BreathingStyle;
 
         public void OnEnterWorldBreathing(Player player)
@@ -70,8 +71,8 @@ namespace Wisteria.Players
             if (!isBreathing && breathingSound != null)
                 breathingSound.Stop();
 
-            if (breath > 0)
-                Main.NewText("Breath is: " + breath);
+            /*if (breath > 0)
+                Main.NewText("Breath is: " + breath);*/
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -84,11 +85,8 @@ namespace Wisteria.Players
 
                 for (int i = 0; i < 4; i++)
                 {
-                    Vector2 mouthPos = Main.LocalPlayer.Center + new Vector2((10f + Main.rand.NextFloat(-5f, 5f)) * player.direction, -5f);
                     Vector2 velocity = Vector2.UnitX.RotatedByRandom(MathHelper.ToRadians(45f)) * 3f * player.direction;
-                    mouthPos += velocity * 8f;
-                    velocity *= -1;
-                    Dust dust = Dust.NewDustPerfect(mouthPos, DustID.PortalBolt, velocity, 0, new Color(255, 255, 255), 1.5f);
+                    Dust dust = Dust.NewDustPerfect(Main.LocalPlayer.Center + new Vector2((10f + Main.rand.NextFloat(-5f, 5f)) * player.direction, -5f) + velocity * 8f, DustID.PortalBolt, velocity * -1, 0, new Color(255, 255, 255), 1.5f);
                     dust.scale *= 0.4f;
                     dust.noGravity = true;
                 }

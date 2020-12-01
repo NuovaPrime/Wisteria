@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
-using Wisteria.Players;
 using Wisteria.Utilities;
 
 namespace Wisteria.UI
@@ -14,7 +13,7 @@ namespace Wisteria.UI
 
         public Vector2 DrawPosition { get; set; }
 
-        public static bool Visible { get; set; } = true;
+        public static bool Visible { get; set;} = true;
 
         //public const float PADDING_X = -6, PADDING_Y = PADDING_X;
 
