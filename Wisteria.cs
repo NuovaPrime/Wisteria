@@ -46,6 +46,8 @@ namespace Wisteria
                 BreathUIInterface = new UserInterface();
                 BreathUIInterface.SetState(BreathUI);
             }
+
+            Loader.SetupContent();
         }
 
         public override void Unload()

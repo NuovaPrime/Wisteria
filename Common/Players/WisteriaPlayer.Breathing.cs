@@ -8,6 +8,7 @@ using Terraria.ID;
 /*using Terraria.Localization;*/
 
 using Terraria.ModLoader;
+using Wisteria.Common.Loaders;
 using Wisteria.UI;
 
 namespace Wisteria.Common.Players
@@ -25,6 +26,9 @@ namespace Wisteria.Common.Players
             // TODO: Fix localization
             if (Wisteria.Instance.breathKey.GetAssignedKeys().Count == 0)
                 Main.NewText(/*Language.GetTextValue("Mods.Wisteria.BreathKeyUnbound")*/ "Your breath key appears to be unbound. Breathing is a core mechanic in Wisteria, so be sure to bind it to a key!");
+
+            for (int i = 0; i < SlayerRankLoader.SlayerRanks.Count; i++)
+                Main.NewText(SlayerRankLoader.SlayerRanks[i].DisplayName.ToString());
         }
 
         public void PreUpdateBreathing()
