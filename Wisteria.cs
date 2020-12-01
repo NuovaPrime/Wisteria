@@ -78,7 +78,7 @@ namespace Wisteria
                                 Utils.DrawBorderString(
                                 Main.spriteBatch,
                                 SlayerRankText,
-                                new Vector2(Main.screenWidth - 500f, 5f),
+                                new Vector2(Main.screenWidth - 455f, 20f),
                                 new Color(255, 255, 255)); // set a color or sum idk
                             }
                             return true;
