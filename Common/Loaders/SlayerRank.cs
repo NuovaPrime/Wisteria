@@ -11,5 +11,10 @@ namespace Wisteria.Common.Loaders
         public int Type { get; internal set; }
 
         public virtual bool Autoload(ref string name) => Mod.Properties.Autoload;
+
+        /// <summary>
+        /// Allows you to do things when the player ranks up. <br />
+        /// </summary>
+        public virtual void OnRankUp() { }
     }
 }

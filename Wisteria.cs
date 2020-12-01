@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Wisteria.Common.Loaders;
-using Wisteria.Common.Players;
 using Wisteria.UI;
 using Wisteria.Utilities;
 
@@ -18,7 +17,7 @@ namespace Wisteria
         public static UserInterface BreathUIInterface;
 
         public ModHotKey breathKey;
-        public WisteriaPlayer.SlayerRanks slayerRank;
+        public int slayerRank;
 
         public Wisteria()
         {
