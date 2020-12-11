@@ -16,10 +16,11 @@ namespace Wisteria.Common.Players
     public partial class WisteriaPlayer : ModPlayer
     {
         public bool isBreathing;
-        public float breathingSpeed, breathingDecaySpeed, breathingMastery, breath, breathCD, maxBreath;
+        public float breathingSpeed, breathingDecaySpeed, breathingMastery, breath, breathCD, maxBreath, breathingMasteryMax, lungCapacityMastery, lungCapacityMax;
         public int breathSoundTimer, decayTime = 0;
         public SoundEffectInstance breathingSound = null;
-        public Enum BreathingStyle;
+        public int BreathingStyle;
+        public int SlayerRank;
 
         public void OnEnterWorldBreathing(Player player)
         {
@@ -75,17 +76,20 @@ namespace Wisteria.Common.Players
             if (!isBreathing && breathingSound != null)
                 breathingSound.Stop();
 
-            /*if (breath > 0)
-                Main.NewText("Breath is: " + breath);*/
+            breathingMasteryMax = SlayerRank * SlayerRank >= (int)SlayerRanks.Kanoto ? 150 : 100;
+            breathingSpeed = 0.15f * (breathingMastery / 95f);
+
         }
+
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Wisteria.Instance.breathKey.Current && breathCD <= 0)
+            if (Wisteria.Instance.breathKey.Current && breathCD <= 0 && SlayerRank != (int)SlayerRanks.None)
             {
                 isBreathing = true;
                 breath += breathingSpeed;
                 player.velocity *= 0.95f;
+                UpdateBreathingProgression();
 
                 for (int i = 0; i < 4; i++)
                 {

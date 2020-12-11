@@ -1,5 +1,6 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
+using Wisteria.BreathingStyles;
 
 namespace Wisteria.Common.Players
 {
@@ -7,9 +8,15 @@ namespace Wisteria.Common.Players
     {
         public bool playerInitialized;
 
-        public override void PreUpdate() => PreUpdateBreathing();
+        public override void PreUpdate()
+        {
+            PreUpdateBreathing();
+        }
 
-        public override void PostUpdate() => PostUpdateBreathing();
+        public override void PostUpdate()
+        {
+            PostUpdateBreathing();
+        }
 
         public override void Initialize()
         {
@@ -17,7 +24,8 @@ namespace Wisteria.Common.Players
             {
                 breath = 0;
                 maxBreath = 100;
-                BreathingStyle = BreathingStyles.BreathingStyleEnum.None;
+                BreathingStyle = (int)BreathingStyleEnum.None;
+                SlayerRank = (int)SlayerRanks.Mizunoto;
                 breathingMastery = 0;
                 breathingSpeed = 0.15f;
                 breathingDecaySpeed = 0.25f;

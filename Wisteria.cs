@@ -4,13 +4,16 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Wisteria.Common.Loaders;
+using Wisteria.Players;
 using Wisteria.UI;
 using Wisteria.Utilities;
+using static Wisteria.Players.WisteriaPlayer;
 
 namespace Wisteria
 {
     public class Wisteria : Mod
     {
+        public SlayerRanks SlayerRank;
         public static Wisteria Instance { get; private set; }
 
         public static BreathUI BreathUI;
