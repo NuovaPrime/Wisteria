@@ -84,7 +84,7 @@ namespace Wisteria.Common.Players
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Wisteria.Instance.breathKey.Current && breathCD <= 0 && SlayerRank != (int)SlayerRanks.None)
+            if (Wisteria.Instance.breathKey.Current && breathCD <= 0)
             {
                 isBreathing = true;
                 breath += breathingSpeed;

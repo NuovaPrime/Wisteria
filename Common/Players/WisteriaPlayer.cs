@@ -25,7 +25,6 @@ namespace Wisteria.Common.Players
                 breath = 0;
                 maxBreath = 100;
                 BreathingStyle = (int)BreathingStyleEnum.None;
-                SlayerRank = (int)SlayerRanks.Mizunoto;
                 breathingMastery = 0;
                 breathingSpeed = 0.15f;
                 breathingDecaySpeed = 0.25f;
